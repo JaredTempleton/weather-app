@@ -16,39 +16,40 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 card card-header">
-                <!--search function-->
-                <h4>Search for a City:</h4>
-                    <form class="form-inline pb-2">
-                        <div>
-                        <input type="text" class="form-control mr-2">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <div class="">
-                    <ul class="list-group list-group-flush">
-
+            <aside class="col-3">
+                <!--city search -->
+                <form>
+                    <div class="mb-3">
+                        <label for="search-input" class="form-label">Search for a City:</label>
+                        <div class="input-group">
+                            <input type="text" name="search-input" id="search-storage" class="form-control">
+                            <input type="submit" value="Search" class="btn btn-primary" id="search-btn">
+                        </div>
+                    </div>
+                </form>
+                <!--city list -->
+                <div id="cities-card" class="card">
+                    <ul id="city-list" class="list-group">
                     </ul>
                 </div>
-                <div class="col-lg-8">
-                    <!-- weather container-->
-                    <div class="row">
-
-                    </div>
-
-                    <!--forecast container-->
-                    <div class="row">
-
+            </aside>
+            <!--current weather-->
+            <main class="col-9">
+                <!-- Today -->
+                <h2>Current Weather</h2>
+                <div class="card">
+                    <div id="current-weather" class="card-body">
                     </div>
                 </div>
-
-            </div>
+                <!-- Future Forecast -->
+                <h2>5 Day Forecast</h2>
+                <div class="card-group" id="forecast-container">
+                </div>
+            </main>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
     <script src="/script.js"></script>
 </body>
 </html>
