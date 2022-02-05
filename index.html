@@ -10,36 +10,39 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header><h1>Weather Dashboard</h1></header>
+    <header class="jumbotron jumbotron-fluid bg-dark text-white">
+        <h1 class="text-center">Weather Dashboard</h1>
+    </header>
 
-    <div>
-        <div>
-            <!--search function-->
-            <h4>Search for a City:</h4>
-                <form>
-                    <div>
-                    <input type="text">
-                    <button>
-                        <i>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 card card-header">
+                <!--search function-->
+                <h4>Search for a City:</h4>
+                    <form class="form-inline pb-2">
+                        <div>
+                        <input type="text" class="form-control mr-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
 
-                        </i>
-                    </button>
-                </form>
-
-                <div>
-                    <ul>
+                <div class="">
+                    <ul class="list-group list-group-flush">
 
                     </ul>
                 </div>
-                
-                <!-- weather container-->
-                <div>
+                <div class="col-lg-8">
+                    <!-- weather container-->
+                    <div class="row">
 
-                </div>
+                    </div>
 
-                <!--forecast container-->
-                <div>
+                    <!--forecast container-->
+                    <div class="row">
 
+                    </div>
                 </div>
 
             </div>
