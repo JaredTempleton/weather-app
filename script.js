@@ -1,4 +1,4 @@
-$(document).ready(function () { 
+$().ready(function () { 
 
     //get history from local storage
     if (localStorage.getItem("pastWeather") === null) {
@@ -46,7 +46,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (data) {
             $("#current-weather").empty();
-            $("#current-weather").append($("<h3>").text(data.name ));
+            $("#current-weather").append($("<h2>").text(data.name));
 
             var icon = "https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png";
             var iconImg = $("<img>").attr("src", icon).css("display", "inline");
@@ -76,16 +76,16 @@ $(document).ready(function () {
 
             var uvColor = "";
             if(uvi < 3) {
-                bgColor = "bg-success";
+                uvColor = "bg-success";
             } else if (uvIndex < 6) {
-                bgColor = "bg-warning";
+                uvColor = "bg-warning";
             } else {
-                bgColor = "bg-danger";
+                uvColor = "bg-danger";
             }
 
             for (let i = 1; i <6; i++) {
                 let dayWeather = data.daily[i];
-                var forecastBox = $("div");
+                var forecastBox = $("<div>");
                 forecastBox.addClass(["card", "text-white", "bg-primary", "border-light", "mb-3"]);
 
                 var forecastBoxParent = $("<div>").addClass("card-body");
