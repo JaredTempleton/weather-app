@@ -2,7 +2,7 @@ $().ready(function () {
 
     //get history from local storage
     if (localStorage.getItem("pastWeather") === null) {
-        var pastWeather = {cities: []};
+        var pastWeather = { cities: [] };
         localStorage.setItem("pastWeather", JSON.stringify(pastWeather));
     }   else {
         pastWeather = JSON.parse(localStorage.getItem("pastWeather"));
@@ -19,12 +19,12 @@ $().ready(function () {
     function localStorageSave(city) {
         if (pastWeather.cities.includes(city) === false) {
             pastWeather.cities.push(city);
-            localStorage.setItem('pastWeather', JSON.stringify(pastWeather));
+            localStorage.setItem("pastWeather", JSON.stringify(pastWeather));
         }
     }
 
     //function to display recent searches
-    function displayRecent() {
+    function recentCityList() {
         cityList.empty();
         pastWeather.cities.forEach(element => {
             var currentCity = $("<div>").text(element);
@@ -38,9 +38,10 @@ $().ready(function () {
         });
     }
 
+    var apiKey = "87af09b480e9430c23e9eeb789a8fa4f";
+
     function callAPI(city) {
-        var apiKey = "87af09b480e9430c23e9eeb789a8fa4f";
-        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey + '&units=imperial;"
+        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=imperial;"
         $.ajax({
             url: apiUrl,
             method: "GET"
@@ -48,11 +49,11 @@ $().ready(function () {
             $("#current-weather").empty();
             $("#current-weather").append($("<h2>").text(data.name));
 
-            var icon = "https://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png";
+            var icon = "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
             var iconImg = $("<img>").attr("src", icon).css("display", "inline");
             iconImg.css("margin-left", "1rem");
             iconImg.attr("alt", data.weather[0].description);
-            $('#current-weather').append(iconImg);
+            $("#current-weather").append(iconImg);
 
             $("#current-weather").append($("p").text("Temperature: " + data.main.temp + "°").addClass("card-text"))
             $("#current-weather").append($("p").text("Wind: " + data.wind.speed + "MPH").addClass("card-text"))
@@ -65,7 +66,7 @@ $().ready(function () {
     }
 
     function forecast(latitude,longitude) {
-        var forecastApi = "https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely,hourly,alerts&appid=' + apiKey + '&units=imperial'";
+        var forecastApi = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=minutely,hourly,alerts&appid=" + apiKey + "&units=imperial";
 
         $ajax({
             url: forecastApi,
